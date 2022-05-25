@@ -13,9 +13,9 @@ while (True):
             a += i
         for i in range(30):
             a = a.replace('\n\n', '\n')
-        a = a.replace('▶', '\n기존유형:')
+        a = a.replace('▶', '================================================\n기존유형:')
         a = a.replace('■ Subject / Title', '')
-        a = a.replace('\n■ Teacher’s Note', '주제')
+        a = a.replace('\n■ Teacher’s Note', '')
         
         
         print("====================")
@@ -24,10 +24,11 @@ while (True):
             if a[i] == '❶':
                 txt += '\n'
             if (a[i] >= '⓫' and a[i] <= '⓳') or (a[i] >= '❶' and a[i] <= '❿'):
-                if (a[i+2] >= 'A' and a[i+2] <='z'):
+                if (a[i-4] >= 'A' and a[i-4] <='z'):
                     txt += '\n'
             if (a[i]== '①' and a[i-2] != '('):
-                txt += '\n'
+                if not (a[i] >= '⓫' and a[i] <= '⓳') or (a[i] >= '❶' and a[i] <= '❿'):
+                    txt += '\n'
             if a[i] == '⑤':
                 if (a[i-2] <= 'z' or a[i-2] >= 'A'):
                     n_line += 2
